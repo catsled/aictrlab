@@ -34,21 +34,24 @@ def main(control_dict, agent_dict, env_dict):
         obs = envs.reset()
         masks = {env_id: False for env_id in env_dict.keys()}
         envs_id = [env_id for env_id, v in masks.items() if v is False]
-        max_train_reward = 0.
+        train_rewards = {env_id: 0 for env_id in envs_id}
 
         while True:
             actions = wrapper_kv(envs_id, agent.act(unwrapper_kv(obs)))
             data_dicts = envs.step(envs_id, actions)
+            for key in data_dicts.keys():
+                train_rewards[key] += data_dicts[key][0]
             agent.memory(merge(obs, actions, data_dicts))
             envs_id = [key for key, value in data_dicts.items() if value[2] is False]
-
             if not envs_id:
                 break
 
-            max_train_reward += 1
             obs = {key: data_dicts[key][1] for key in envs_id}
 
         update_count, eps = agent.update()
+
+        max_train_reward = max(train_rewards.values())
+
         mq.put((episode, agent.target_policy.state_dict()))
         writer.add_scalar("Train/max return", max_train_reward, episode)
         writer.add_scalar("Train/update_count", update_count, episode)

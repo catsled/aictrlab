@@ -17,6 +17,7 @@ def worker(env_comm_info):
     local_pipe, remote_pipe = env_comm_info['comm_info']
     remote_pipe.close()
     num_step = 0
+    reward_sum = 0.
 
     try:
         while True:
@@ -30,12 +31,12 @@ def worker(env_comm_info):
                 local_pipe.send({env_id: ob})
             elif cmd == "step":
                 next_ob, reward, done, info = env.step(data)
-                info['num_step'] = num_step
-                local_pipe.send({env_id: [reward, next_ob, done, info]})
                 if done:
                     num_step = 0
                 else:
                     num_step += 1
+                info['num_step'] = num_step
+                local_pipe.send({env_id: [reward, next_ob, done, info]})
             elif cmd == "sample":
                 action = env.action_space.sample()
                 local_pipe.send({env_id: action})
