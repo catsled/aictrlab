@@ -1,0 +1,14 @@
+lr: 1.e-3
+eps: 1.0
+optimizer: Adam
+buffer_type: uniform
+buffer_size: 50000
+gamma: 0.995
+update_epoch: 10
+update_interval: 100
+network_name: vanilla_mlp
+observation_shape: null
+action_shape: null
+output_shape: null
+batch_size: 256
+eps_decay_rate: 5.e-5
