@@ -15,10 +15,14 @@ def main(control_dict, agent_dict, env_dict):
     logfile_name = env_params['env_1']['env_name'] + "_" + \
                    control_params['alg_config_path'].rsplit("/", 1)[-1].split(".")[0] + \
                    datetime.now().strftime("%Y%m%d%H%M%S") + "_train"
+    savefile_name = env_params['env_1']['env_name'] + "_" + \
+                    control_params['alg_config_path'].rsplit("/", 1)[-1].split(".")[0] + \
+                    datetime.now().strftime("%Y%m%d%H%M%S")
+
     writer = SummaryWriter(log_dir='../logs/{}'.format(logfile_name))
     # 1.创建环境
     envs = make_parallel_envs(env_params)
-    # # 2.创建Agent
+    # 2.创建Agent
     agent = make_agent(control_params['alg_config_path'].rsplit("/", 1)[-1].split(".")[0],
                        agent_dict)
 
@@ -29,6 +33,7 @@ def main(control_dict, agent_dict, env_dict):
     mq.put((0, agent.target_policy.state_dict()))
 
     episodes = control_dict['episodes']
+    save_interval = control_dict['save_interval']
 
     for episode in range(1, episodes+1):
         obs = envs.reset()
@@ -49,6 +54,8 @@ def main(control_dict, agent_dict, env_dict):
             obs = {key: data_dicts[key][1] for key in envs_id}
 
         update_count, eps = agent.update()
+        if episode % save_interval == 0:
+            agent.save("../trained_models/{}.pt".format(savefile_name))
 
         max_train_reward = max(train_rewards.values())
 

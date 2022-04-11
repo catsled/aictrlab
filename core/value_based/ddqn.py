@@ -126,3 +126,6 @@ class DDQN(object):
     def memory(self, key_values):
         self.buffer.push(key_values)
 
+    def save(self, path):
+        torch.save(self.target_policy.state_dict(), path)
+

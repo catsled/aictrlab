@@ -3,3 +3,4 @@ alg_config_path: /home/cat/aictrlab/configs/algs/dqn.yml
 episodes: 10000000
 train_device: 0
 eval_device: 0
+save_interval: 100
