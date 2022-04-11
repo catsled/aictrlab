@@ -18,3 +18,6 @@
 
 ![avatar](eval_imgs/lunar_ander_v2.png)
 
+3. Acrobot_v1
+
+![avatar](eval_imgs/acrobot_v1.png)
