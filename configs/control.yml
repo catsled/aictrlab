@@ -1,5 +1,5 @@
-env_config_path: /home/cat/aictrlab/configs/envs/acrobot_v1.yml
-alg_config_path: /home/cat/aictrlab/configs/algs/dqn.yml
+env_config_path: /home/cat/aictrlab/configs/envs/mountaincarcontinuous_v0.yml
+alg_config_path: /home/cat/aictrlab/configs/algs/ddpg.yml
 episodes: 10000000
 train_device: 0
 eval_device: 0

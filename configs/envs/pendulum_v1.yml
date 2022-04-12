@@ -1,0 +1,40 @@
+env_1:
+  env_name: Pendulum-v1
+  random_seed: 0
+  observation_shape: !!python/tuple [3, 1]
+  action_shape: !!python/tuple [1, 1]
+  output_shape: !!python/tuple [1, 1]
+  action_range: 2
+
+env_2:
+  env_name: Pendulum-v1
+  random_seed: 1
+  observation_shape: !!python/tuple [3, 1]
+  action_shape: !!python/tuple [1, 1]
+  output_shape: !!python/tuple [1, 1]
+  action_range: 2
+
+env_3:
+  env_name: Pendulum-v1
+  random_seed: 2
+  observation_shape: !!python/tuple [3, 1]
+  action_shape: !!python/tuple [1, 1]
+  output_shape: !!python/tuple [1, 1]
+  action_range: 2
+
+env_4:
+  env_name: Pendulum-v1
+  random_seed: 3
+  observation_shape: !!python/tuple [3, 1]
+  action_shape: !!python/tuple [1, 1]
+  output_shape: !!python/tuple [1, 1]
+  action_range: 2
+
+env_5:
+  env_name: Pendulum-v1
+  random_seed: 4
+  observation_shape: !!python/tuple [3, 1]
+  action_shape: !!python/tuple [1, 1]
+  output_shape: !!python/tuple [1, 1]
+  action_range: 2
+

@@ -25,7 +25,7 @@ class DQN(object):
         network [nn.Module]: 传递的神经网络名称， 需要通过其他函数进行实例化
         update_interval [int]: 更新target_policy的间隔
         buffer_type [str]: 创建replay_buffer，需要类型，大小等
-        minibatch [int]: 更新时batch的大小
+        batch_size [int]: 更新时batch的大小
         """
         super(DQN, self).__init__()
         self.lr = float(kwargs.get("lr", 1e-4))
