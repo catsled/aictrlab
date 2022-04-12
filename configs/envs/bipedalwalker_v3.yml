@@ -1,0 +1,31 @@
+env_1:
+  env_name: BipedalWalker-v3
+  random_seed: 0
+  observation_shape: !!python/tuple [24, ]
+  action_shape: !!python/tuple [4, ]
+  output_shape: !!python/tuple [4, ]
+  action_range: 1
+
+env_2:
+  env_name: BipedalWalker-v3
+  random_seed: 1
+  observation_shape: !!python/tuple [24, ]
+  action_shape: !!python/tuple [4, ]
+  output_shape: !!python/tuple [4, ]
+  action_range: 1
+
+env_3:
+  env_name: BipedalWalker-v3
+  random_seed: 2
+  observation_shape: !!python/tuple [24, ]
+  action_shape: !!python/tuple [4, ]
+  output_shape: !!python/tuple [4, ]
+  action_range: 1
+
+env_4:
+  env_name: BipedalWalker-v3
+  random_seed: 3
+  observation_shape: !!python/tuple [24, ]
+  action_shape: !!python/tuple [4, ]
+  output_shape: !!python/tuple [4, ]
+  action_range: 1
